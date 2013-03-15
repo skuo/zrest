@@ -1,0 +1,5 @@
+zrest.lwes.avid=1.0
+zrest.tlog.tlog_multicast_address=224.2.22.222
+zrest.tlog.tlog_send_level=4
+zrest.tlog.tlog_multicast_port=2222
+zrest.tlog.tlog_instance_id=0
