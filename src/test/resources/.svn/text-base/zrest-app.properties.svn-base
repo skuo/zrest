@@ -1,1 +1,0 @@
-zrest.dataSource.connectUrl=jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = devngdb1.wc1.yellowpages.com)(PORT = 1521)))(CONNECT_DATA = (SID = webdev1)))
