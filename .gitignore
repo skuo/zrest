@@ -1,0 +1,11 @@
+*.pid
+*.log*
+*~
+workspace.xml
+target
+.classpath
+.project
+.settings
+mem.properties
+mem.script
+
