@@ -16,12 +16,12 @@
 	<!-- Normal Execution -->         
 	<!--==================-->
 
-    <context:property-placeholder location="file:./src/test/resources/zrest.properties"/>
+    <context:property-placeholder location="file:/Users/skuo/git/zrest/src/test/resources/zrest.properties"/>
     
 	<!-- BoneCP configuration -->
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 		<property name="driverClass" value="${zrest.db.driverClassName}" />
-		<property name="jdbcUrl" value="${zrest.db.connectUrl}" />
+		<property name="jdbcUrl" value="${zrest.db.url}" />
 		<property name="username" value="${zrest.db.username}" />
 		<property name="password" value="${zrest.db.password}" />
 		<property name="idleConnectionTestPeriod" value="60" />
