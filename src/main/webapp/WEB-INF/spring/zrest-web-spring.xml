@@ -16,7 +16,7 @@
 	<!-- Normal Execution -->         
 	<!--==================-->
 
-    <context:property-placeholder location="file:/Users/skuo/git/zrest/src/test/resources/zrest.properties"/>
+    <context:property-placeholder location="/WEB-INF/spring/zrest.properties"/>
     
 	<!-- BoneCP configuration -->
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
