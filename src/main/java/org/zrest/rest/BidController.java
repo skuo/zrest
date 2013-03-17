@@ -54,7 +54,7 @@ public class BidController {
      * Put bid.  Returns BidStatus with status code of 200 or 500.
      * @param sourceId original source id
      * @param source source identifier
-     * @param bid float
+     * @param bid Bid
      * @param response HttpServletReponse
      * @return BidStatus in json format
      * @throws SQLException return 500 status with error html page
