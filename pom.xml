@@ -8,12 +8,31 @@
   <name>zrest</name>
   <version>0.0.1-SNAPSHOT</version>
 
+  <!-- start of properties -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jetty.version>9.0.0.v20130308</jetty.version>
     <jetty.jsp.version>9.0.0.v20130308</jetty.jsp.version>
-    <spring.version>3.1.0.M2</spring.version>
+    <spring.version>3.1.2.RELEASE</spring.version>
   </properties>
+
+  <!-- start of profiles -->
+  <profiles>
+    <profile>
+      <id>local</id>
+      <properties>
+        <dist>local</dist>
+        <override.conf.dir>src/main/conf/local</override.conf.dir>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <dist>prod</dist>
+        <override.conf.dir>src/main/conf/prod</override.conf.dir>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <!-- begin Spring -->
@@ -130,6 +149,11 @@
       <artifactId>jetty-servlets</artifactId>
       <version>${jetty.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-runner</artifactId>
+      <version>${jetty.version}</version>
+    </dependency>
     <!-- End JETTY -->
     <!-- Begin JSP and JSTL -->
     <dependency>
@@ -196,7 +220,7 @@
   </repositories>
 
   <build>
-    <finalName>zrest-web</finalName>
+    <finalName>zrest-web-${project.version}</finalName>
     <plugins>
       <!-- compiler plugin -->
       <plugin>
@@ -221,6 +245,28 @@
           <downloadSources>true</downloadSources>
           <downloadJavadocs>true</downloadJavadocs>
         </configuration>
+      </plugin>
+      <!-- assembly-plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>zrest.tar.gz</id>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+              <outputDirectory>target</outputDirectory>
+              <finalName>zrest-${project.version}</finalName>
+              <appendAssemblyId>true</appendAssemblyId>
+            </configuration>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
