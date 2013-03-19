@@ -29,7 +29,7 @@
     <!-- override some conf files, replacing tokens -->
     <fileSet>
       <directory>${override.conf.dir}</directory>
-      <outputDirectory>conf</outputDirectory>
+      <outputDirectory>config</outputDirectory>
       <includes>
         <include>*.xml</include>
         <include>*.properties</include>
