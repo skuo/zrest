@@ -12,6 +12,7 @@
         <include>**/*</include>
       </includes>
       <fileMode>755</fileMode>
+      <filtered>true</filtered>
     </fileSet>
     <fileSet>
       <directory>src/main/resources</directory>
@@ -21,7 +22,7 @@
         <include>**/*.properties</include>
       </includes>
       <excludes>
-        <exclude>royalty-override.properties</exclude>
+        <exclude>rest-override.properties</exclude>
       </excludes>
     </fileSet>
    
