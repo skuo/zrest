@@ -24,8 +24,8 @@
 		<property name="jdbcUrl" value="${zrest.db.url}" />
 		<property name="username" value="${zrest.db.username}" />
 		<property name="password" value="${zrest.db.password}" />
-		<property name="idleConnectionTestPeriod" value="60" />
-		<property name="idleMaxAge" value="240" />
+		<property name="idleConnectionTestPeriodInMinutes" value="60" />
+		<property name="idleMaxAgeInMinutes" value="60" />
 		<property name="maxConnectionsPerPartition" value="5" />
 		<property name="minConnectionsPerPartition" value="1" />
 		<property name="partitionCount" value="3" />
