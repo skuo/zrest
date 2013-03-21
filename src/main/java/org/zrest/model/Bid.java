@@ -100,4 +100,9 @@ public class Bid {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Bid [sourceId=" + sourceId + ", source=" + source + ", bid=" + bid + ", updatedAt=" + updatedAt + "]";
+    }
+
 }

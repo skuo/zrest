@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,8 @@ import org.zrest.model.BidStatus;
 
 @Controller
 public class BidController {
+    private static final Log log = LogFactory.getLog(BidController.class);
+
     @Autowired
     BidDao bidDao;
 
@@ -35,6 +39,7 @@ public class BidController {
      */
     public Bid getBid(@PathVariable String sourceId, @PathVariable String source, HttpServletResponse response)
             throws IOException {
+        log.info("getBid: sourceId=" + sourceId + ", source=" + source);
         Bid bid = null;
         try {
             bid = bidDao.get(sourceId, source);
@@ -61,6 +66,7 @@ public class BidController {
      */
     public BidStatus putBid(@PathVariable String sourceId, @PathVariable String source, @RequestBody Bid bid,
             HttpServletResponse response) throws SQLException {
+        log.info("putBid: sourceId=" + sourceId + ", source=" + source + ", bid=" + bid.toString()); 
         bid.setSourceId(sourceId);
         bid.setSource(source);
         BidStatus bidStatus = bidDao.put(bid);
