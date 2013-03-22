@@ -14,18 +14,14 @@
       <fileMode>755</fileMode>
       <filtered>true</filtered>
     </fileSet>
+    <!-- copy start-*.jar -->
     <fileSet>
-      <directory>src/main/resources</directory>
-      <outputDirectory>conf</outputDirectory>
+      <directory>lib</directory>
+      <outputDirectory>lib</outputDirectory>
       <includes>
-        <include>**/*.xml</include>
-        <include>**/*.properties</include>
+        <include>**/*.jar</include>
       </includes>
-      <excludes>
-        <exclude>rest-override.properties</exclude>
-      </excludes>
-    </fileSet>
-   
+    </fileSet>   
     <!-- override some conf files, replacing tokens -->
     <fileSet>
       <directory>${override.conf.dir}</directory>

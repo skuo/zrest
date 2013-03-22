@@ -10,7 +10,7 @@
   </appender>
 
   <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
-    <param name="File" value="target/jetty.log"/>
+    <param name="File" value="logs/jetty.log"/>
     <param name="MaxFileSize" value="10MB"/>
     <param name="MaxBackupIndex" value="4"/>
     <param name="Append" value="true"/>
