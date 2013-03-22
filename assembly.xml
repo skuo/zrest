@@ -24,6 +24,24 @@
     </fileSet>   
     <!-- override some conf files, replacing tokens -->
     <fileSet>
+      <directory>src/main/conf</directory>
+      <outputDirectory>conf</outputDirectory>
+      <includes>
+        <include>*.xml</include>
+        <include>*.properties</include>
+      </includes>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
+      <directory>conf</directory>
+      <outputDirectory>logs</outputDirectory>
+      <includes>
+        <include></include>
+      </includes>
+      <filtered>false</filtered>
+    </fileSet>
+    <!-- create an empty logs directory for requestLogs -->
+    <fileSet>
       <directory>${override.conf.dir}</directory>
       <outputDirectory>conf</outputDirectory>
       <includes>
@@ -32,6 +50,7 @@
       </includes>
       <filtered>false</filtered>
     </fileSet>
+    
     <!-- copy war -->
     <fileSet>
       <directory>target</directory>
