@@ -16,7 +16,7 @@
 	<!-- Normal Execution -->         
 	<!--==================-->
 
-    <context:property-placeholder location="file:///${PWD}/config/zrest.properties"/>
+    <context:property-placeholder location="file:///${PWD}/conf/zrest.properties"/>
     
 	<!-- BoneCP configuration -->
 	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
