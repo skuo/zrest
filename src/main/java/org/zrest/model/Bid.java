@@ -6,15 +6,19 @@ import java.text.ParseException;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 
 public class Bid {
     private static final String TIMESTAMP_FORMAT = "yyyyMMddHHmmss";
     private static final String[] TIMESTAMP_PATTERNS = { TIMESTAMP_FORMAT };
+    private static final DateTimeFormatter utcFmt = ISODateTimeFormat.dateTime().withZoneUTC();
 
     private String sourceId;
     private String source;
     private float bid;
     private long updatedAt;
+    private String updatedAtStr;
 
     public Bid() {
     }
@@ -58,6 +62,14 @@ public class Bid {
         this.updatedAt = updatedAt;
     }
 
+    public String getUpdatedAtStr() {
+        return utcFmt.print(updatedAt);
+    }
+    
+    public void setUpdatedAtStr() {
+        
+    }
+    
     @JsonIgnore
     public Timestamp getUpdatedAtTimestamp() throws ParseException {
         return new Timestamp(DateUtils.parseDate(Long.toString(updatedAt), TIMESTAMP_PATTERNS).getTime());
@@ -102,7 +114,8 @@ public class Bid {
 
     @Override
     public String toString() {
-        return "Bid [sourceId=" + sourceId + ", source=" + source + ", bid=" + bid + ", updatedAt=" + updatedAt + "]";
+        return "Bid [sourceId=" + sourceId + ", source=" + source + ", bid=" + bid + ", updatedAt=" + updatedAt 
+                + "updatedAtStr=" + updatedAtStr + "]";
     }
 
 }
