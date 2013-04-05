@@ -42,7 +42,8 @@ public class BidController {
      */
     public Bid getBid(@PathVariable String sourceId, @PathVariable String source, HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        log.info("getBid: sourceId=" + sourceId + ", source=" + source + ", accept=" + request.getHeader("Content-Type"));
+        log.info("getBid: sourceId=" + sourceId + ", source=" + source + ", accept="
+                + request.getHeader("Content-Type") + ", Authorization=" + request.getHeader("Authorization"));
         Bid bid = null;
         try {
             bid = bidDao.get(sourceId, source);
@@ -53,6 +54,7 @@ public class BidController {
         } catch (SQLException sqle) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
+        response.setHeader("Approved", "true");
         return bid;
     }
 
