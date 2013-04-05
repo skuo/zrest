@@ -18,7 +18,6 @@ public class Bid {
     private String source;
     private float bid;
     private long updatedAt;
-    private String updatedAtStr;
 
     public Bid() {
     }
@@ -61,15 +60,12 @@ public class Bid {
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
+    @JsonIgnore
+    public String getUpdateAtStr() {
+        return utcFmt.print(updatedAt);        
+    }
 
-    public String getUpdatedAtStr() {
-        return utcFmt.print(updatedAt);
-    }
-    
-    public void setUpdatedAtStr() {
-        
-    }
-    
     @JsonIgnore
     public Timestamp getUpdatedAtTimestamp() throws ParseException {
         return new Timestamp(DateUtils.parseDate(Long.toString(updatedAt), TIMESTAMP_PATTERNS).getTime());
@@ -114,8 +110,7 @@ public class Bid {
 
     @Override
     public String toString() {
-        return "Bid [sourceId=" + sourceId + ", source=" + source + ", bid=" + bid + ", updatedAt=" + updatedAt 
-                + "updatedAtStr=" + updatedAtStr + "]";
+        return "Bid [sourceId=" + sourceId + ", source=" + source + ", bid=" + bid + ", updatedAt=" + updatedAt + "]";
     }
 
 }

@@ -2,7 +2,9 @@ package org.zrest.rest;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -38,9 +40,9 @@ public class BidController {
      * @throws SQLException returns 500 status with error html page
      * @throws IOException returns 500 status with error html page
      */
-    public Bid getBid(@PathVariable String sourceId, @PathVariable String source, HttpServletResponse response)
+    public Bid getBid(@PathVariable String sourceId, @PathVariable String source, HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        log.info("getBid: sourceId=" + sourceId + ", source=" + source);
+        log.info("getBid: sourceId=" + sourceId + ", source=" + source + ", accept=" + request.getHeader("Content-Type"));
         Bid bid = null;
         try {
             bid = bidDao.get(sourceId, source);
@@ -103,5 +105,14 @@ public class BidController {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
         return bid;        
+    }
+    
+    @SuppressWarnings("unused")
+    private void printHeader(HttpServletRequest request) {
+        Enumeration<String> names = request.getHeaderNames();
+        while (names.hasMoreElements()) {
+            String header = names.nextElement();
+            log.info("\t" + header + "=" + request.getHeader(header));
+        }
     }
 }

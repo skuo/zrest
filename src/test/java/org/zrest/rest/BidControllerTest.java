@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
@@ -17,7 +18,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zrest.model.Bid;
 import org.zrest.model.BidStatus;
-import org.zrest.rest.BidController;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,20 +34,21 @@ public class BidControllerTest {
         float b = 1.2345f;
         Timestamp ts = new Timestamp(new Date().getTime());
         Bid bid = new Bid(sourceId, source, b, ts);
+        HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
 
         // insert a bid
         BidStatus bidStatus = bidController.putBid(sourceId, source, bid, response);
         assertEquals(BidStatus.SUCCESS,bidStatus.getStatus());
         // get the inserted bid
-        Bid bid2 = bidController.getBid(sourceId, source, response);
+        Bid bid2 = bidController.getBid(sourceId, source, request, response);
         assertEquals(bid, bid2);
         // update bid
         bid.setBid(2.3456f);
         bidStatus = bidController.putBid(sourceId, source, bid, response);
         assertEquals(BidStatus.SUCCESS,bidStatus.getStatus());
         // get updated bid
-        bid2 = bidController.getBid(sourceId, source, response);
+        bid2 = bidController.getBid(sourceId, source, request, response);
         assertEquals(bid, bid2);        
 
     }
