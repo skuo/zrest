@@ -29,6 +29,15 @@ public class BidController {
     @Autowired
     BidDao bidDao;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/version", headers = "accept=application/json")
+    @ResponseBody    public String getVersion(HttpServletRequest request, HttpServletResponse response) {
+        log.info("getVersion");
+        StringBuilder sb = new StringBuilder();
+        sb.append("java.version=" + System.getProperty("java.version"));
+        log.info(sb.toString());
+        return sb.toString();
+    }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/bids/{sourceId}/source/{source}", headers = "accept=application/json")
     @ResponseBody
     /**

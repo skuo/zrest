@@ -27,3 +27,7 @@ cd zrest-${project.version}
 ./bin/startZRest.sh # to start
 
 ./bin/stopZRest.sh  # to stop
+
+Development
+-----------
+./runJetty # debug port at 4000, jetty listens at 8080
