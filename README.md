@@ -21,6 +21,9 @@ Running Jetty using shell script
 -------------------------------
 
 tar -zxvf zrest-${project.version}.tar.gz
+
 cd zrest-${project.version}
+
 ./bin/startZRest.sh # to start
+
 ./bin/stopZRest.sh  # to stop
