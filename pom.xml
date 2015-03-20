@@ -14,6 +14,7 @@
     <jetty.version>9.2.10.v20150310</jetty.version>
     <jetty.jsp.version>9.2.10.v20150310</jetty.jsp.version>
     <spring.version>4.0.6.RELEASE</spring.version>
+    <apache.jsp.scope>provided</apache.jsp.scope>
   </properties>
 
   <!-- start of profiles -->
@@ -23,6 +24,7 @@
       <properties>
         <dist>local</dist>
         <override.conf.dir>src/main/conf/local</override.conf.dir>
+        <apache.jsp.scope>compile</apache.jsp.scope>
       </properties>
     </profile>
     <profile>
@@ -30,6 +32,7 @@
       <properties>
         <dist>prod</dist>
         <override.conf.dir>src/main/conf/prod</override.conf.dir>
+        <apache.jsp.scope>compile</apache.jsp.scope>
       </properties>
     </profile>
   </profiles>
@@ -194,7 +197,13 @@
       <artifactId>jetty-maven-plugin</artifactId>
       <version>${jetty.jsp.version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.mortbay.jasper</groupId>
+      <artifactId>apache-jsp</artifactId>
+      <version>8.0.9.M3</version>
+      <scope>${apache.jsp.scope}</scope>
+    </dependency>
+    
     <!-- End JSP and JSTL -->
     <!-- Begin of test jars -->
     <dependency>
