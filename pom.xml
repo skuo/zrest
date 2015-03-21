@@ -256,6 +256,19 @@
     </repository>
   </repositories>
 
+  <distributionManagement>
+    <repository>
+      <id>maker-releases</id>
+      <name>Maker Release Repository</name>
+      <url>http://localhost:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>maker-snapshots</id>
+      <name>Maker Snapshot Repository</name>
+      <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <build>
     <finalName>zrest-web-${project.version}</finalName>
     <plugins>
