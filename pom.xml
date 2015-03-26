@@ -260,12 +260,14 @@
     <repository>
       <id>maker-releases</id>
       <name>Maker Release Repository</name>
-      <url>http://localhost:8081/nexus/content/repositories/releases</url>
+      <!-- <url>http://localhost:8081/nexus/content/repositories/releases</url> -->
+      <url>http://10.0.5.235:8081/nexus/content/repositories/releases</url>
     </repository>
     <snapshotRepository>
       <id>maker-snapshots</id>
       <name>Maker Snapshot Repository</name>
-      <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+      <!-- <url>http://localhost:8081/nexus/content/repositories/snapshots</url> -->
+      <url>http://10.0.5.235:8081/nexus/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
