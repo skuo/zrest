@@ -29,7 +29,7 @@
     </New>
   </Set>
 
-  <Ref id="RequestLog">
+  <Ref refid="RequestLog">
     <Set name="requestLog">
       <New id="RequestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">
         <Arg>
