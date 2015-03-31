@@ -22,7 +22,7 @@ public class FileUploadController {
 	private static final Log log = LogFactory
 			.getLog(FileUploadController.class);
 
-    @Value("${zrest.upload.dir}") 
+    @Value("${zrest.uploaded.dir}") 
     private String uploadDir;
 	/**
 	 * Upload single file using Spring Controller

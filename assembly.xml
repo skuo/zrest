@@ -26,7 +26,7 @@
     </fileSet>   
     <!-- override some conf files, replacing tokens -->
     <fileSet>
-      <directory>src/main/conf</directory>
+      <directory>conf</directory>
       <outputDirectory>conf</outputDirectory>
       <includes>
         <include>*.xml</include>
