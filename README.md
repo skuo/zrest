@@ -20,7 +20,7 @@ java -jar ~/.m2/repository/org/eclipse/jetty/jetty-runner/9.0.0.v20130308/jetty-
 Running Jetty using shell script
 -------------------------------
 
-tar -zxvf zrest-${project.version}.tar.gz
+cd target; tar -zxvf zrest-${project.version}.tar.gz
 
 cd zrest-${project.version}
 

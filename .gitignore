@@ -1,6 +1,7 @@
 *.pid
 *.log*
 *~
+*.pyc
 workspace.xml
 target
 .classpath
@@ -8,4 +9,6 @@ target
 .settings
 mem.properties
 mem.script
+.pydevproject
+.tern-project
 
