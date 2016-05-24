@@ -23,10 +23,11 @@ import org.zrest.model.BidStatus;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 
 
 @Controller
-@Api(value="zrest-web", description="ZRest Web")
+@Api(value="BidController", description="BidController for GET and PUT bids")
 public class BidController {
     private static final Log log = LogFactory.getLog(BidController.class);
 
@@ -55,7 +56,10 @@ public class BidController {
      * @throws SQLException returns 500 status with error html page
      * @throws IOException returns 500 status with error html page
      */
-    public Bid getBid(@PathVariable String sourceId, @PathVariable String source, HttpServletRequest request, HttpServletResponse response)
+    public Bid getBid(
+            @ApiParam(name="sourceId", value="The bid source id", required=true) @PathVariable String sourceId, 
+            @ApiParam(name="source", value="The bid source", required=true) @PathVariable String source, 
+            HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         log.info("getBid: sourceId=" + sourceId + ", source=" + source + ", accept="
                 + request.getHeader("Content-Type") + ", Authorization=" + request.getHeader("Authorization"));
@@ -85,7 +89,9 @@ public class BidController {
      * @return BidStatus in json format
      * @throws SQLException return 500 status with error html page
      */
-    public BidStatus putBid(@PathVariable String sourceId, @PathVariable String source, @RequestBody Bid bid,
+    public BidStatus putBid(
+            @ApiParam(name="sourceId", value="The bid source id", required=true) @PathVariable String sourceId, 
+            @ApiParam(name="source", value="The bid source", required=true) @PathVariable String source, @RequestBody Bid bid,
             HttpServletResponse response) throws SQLException {
         log.info("putBid: sourceId=" + sourceId + ", source=" + source + ", bid=" + bid.toString()); 
         bid.setSourceId(sourceId);
@@ -97,7 +103,7 @@ public class BidController {
         return bidStatus;
     }
 
-    //@ApiOperation(value="Get bids by sourceId and input parameters source and id")
+    @ApiOperation(value="Get bids by sourceId and input parameters source and id")
     @RequestMapping(method = RequestMethod.GET, value="/bids/{sourceId}", headers = "accept=application/json")
     @ResponseBody
     /**
@@ -128,6 +134,7 @@ public class BidController {
     
     @SuppressWarnings("unused")
     private void printHeader(HttpServletRequest request) {
+        @SuppressWarnings("unchecked")
         Enumeration<String> names = request.getHeaderNames();
         while (names.hasMoreElements()) {
             String header = names.nextElement();
