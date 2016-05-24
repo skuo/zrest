@@ -49,7 +49,7 @@ def build_and_start(version=VERSION):
         local("./target/zrest-%s/bin/stopZRest.sh" % version)
         local("mvn clean install -P local")
         local("cd target; tar -zxvf zrest-%s.tar.gz" % version)
-        replace_properties()
+        #replace_properties()
         #
         local("cd target/zrest-%s; ./bin/startZRest.sh" % version)
         print "\nwait 3 seconds before tailing\n"

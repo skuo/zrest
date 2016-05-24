@@ -5,9 +5,10 @@ import java.text.ParseException;
 
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.apache.commons.lang.time.DateUtils;
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Bid {
     private static final String TIMESTAMP_FORMAT = "yyyyMMddHHmmss";

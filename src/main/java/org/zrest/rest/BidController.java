@@ -21,14 +21,19 @@ import org.zrest.db.BidDao;
 import org.zrest.model.Bid;
 import org.zrest.model.BidStatus;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
 
 @Controller
+@Api(value="zrest-web", description="ZRest Web")
 public class BidController {
     private static final Log log = LogFactory.getLog(BidController.class);
 
     @Autowired
     BidDao bidDao;
 
+    @ApiOperation(value="Java version")
     @RequestMapping(method = RequestMethod.GET, value = "/version", headers = "accept=application/json")
     @ResponseBody    public String getVersion(HttpServletRequest request, HttpServletResponse response) {
         log.info("getVersion");
@@ -38,6 +43,7 @@ public class BidController {
         return sb.toString();
     }
     
+    @ApiOperation(value="Get a Bid for sourceId and source")
     @RequestMapping(method = RequestMethod.GET, value = "/bids/{sourceId}/source/{source}", headers = "accept=application/json")
     @ResponseBody
     /**
@@ -67,6 +73,7 @@ public class BidController {
         return bid;
     }
 
+    @ApiOperation(value="Put a bid for sourceId and source")
     @RequestMapping(method = RequestMethod.PUT, value = "/bids/{sourceId}/source/{source}", headers = "accept=application/json")
     @ResponseBody
     /**
@@ -90,6 +97,7 @@ public class BidController {
         return bidStatus;
     }
 
+    //@ApiOperation(value="Get bids by sourceId and input parameters source and id")
     @RequestMapping(method = RequestMethod.GET, value="/bids/{sourceId}", headers = "accept=application/json")
     @ResponseBody
     /**

@@ -36,7 +36,7 @@
 	</bean>
 
 	<bean id="jsonConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes" value="application/json" />
 	</bean>
 
@@ -44,4 +44,14 @@
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
     </bean>
+    
+    <!-- swagger-springMvc -->
+    <!-- 0.5.2 -->
+    <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
+    
+<!-- 1.0.2
+    <bean id="springSwaggerConfig" class="com.mangofactory.swagger.configuration.SpringSwaggerConfig">
+    </bean>
+-->
+    
 </beans>
