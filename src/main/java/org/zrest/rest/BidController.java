@@ -134,7 +134,6 @@ public class BidController {
     
     @SuppressWarnings("unused")
     private void printHeader(HttpServletRequest request) {
-        @SuppressWarnings("unchecked")
         Enumeration<String> names = request.getHeaderNames();
         while (names.hasMoreElements()) {
             String header = names.nextElement();

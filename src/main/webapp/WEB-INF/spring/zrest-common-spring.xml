@@ -10,6 +10,9 @@
          http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven/>
+    <mvc:resources mapping="css/**" location="/css/" />
+    <mvc:resources mapping="images/**" location="/images/" />
+    <mvc:resources mapping="lib/**" location="/lib/" />
     
     <!-- Resolves views selected for rendering by @Controllers to .jsp resources 
         in the /WEB-INF/views directory -->
@@ -46,12 +49,19 @@
     </bean>
     
     <!-- swagger-springMvc -->
-    <!-- 0.5.2 -->
+    <!-- 0.5.2, 0.6.6 -->
+
     <bean id="documentationConfig" class="com.mangofactory.swagger.configuration.DocumentationConfig"/>
-    
-<!-- 1.0.2
+
+<!-- 1.0.2 -->
+<!-- 
+    <mvc:default-servlet-handler/>
+    <context:annotation-config/>
     <bean id="springSwaggerConfig" class="com.mangofactory.swagger.configuration.SpringSwaggerConfig">
     </bean>
--->
-    
+-->    
+<!--  
+    <bean id="springSwaggerConfig" class="org.zrest.config.SwaggerConfig">
+    </bean>
+-->    
 </beans>

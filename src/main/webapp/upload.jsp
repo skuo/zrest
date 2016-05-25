@@ -13,5 +13,7 @@
 		<input type="submit" value="Upload"> Press here to upload the file!
 	</form>
 
+    <img id="show-pet-store-icon" src="<c:url value="/images/pet_store_api.png" />" title="Show Swagger Petstore Example Apis">
+
 </body>
 </html>
